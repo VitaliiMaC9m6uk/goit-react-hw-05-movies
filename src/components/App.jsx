@@ -5,16 +5,17 @@ import Header from "./Header/Header";
 
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Header />}>
-        <Route index element={<HomePage />} />
-        <Route path="/movie" element={<MoviePage />}>
+    <>
+      <Header />
+      <Routes >
+        <Route path="/" element={<HomePage />} />
+        <Route path="movies" element={<MoviePage />}>
           <Route path=":movieId">
             <Route path="cast" />
             <Route path="reviews" />
           </Route>
         </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 };

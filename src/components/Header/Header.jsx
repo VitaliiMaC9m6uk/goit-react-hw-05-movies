@@ -1,22 +1,19 @@
-import { Outlet } from "react-router-dom";
+import {  Outlet } from "react-router-dom";
+import { NavLink, Container, Navbar } from './Header.styled';
 
 const Header = () => {
     return (
       <>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-                <a className="nav-link" href="/movie">
-                  Movie
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navbar>
+          <Container>
+            <NavLink href="/">
+              Home
+            </NavLink>
+            <NavLink href="/movies">
+              Movie
+            </NavLink>
+          </Container>
+        </Navbar>
         <Outlet />
       </>
     );
