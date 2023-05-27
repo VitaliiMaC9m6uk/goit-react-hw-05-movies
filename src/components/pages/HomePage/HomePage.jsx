@@ -2,6 +2,7 @@ import { getTrendingFilm } from "api/Search";
 import { CardFilm } from "components/CardFilm/CardFilm";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { List } from "./HomePage.styled";
 
 const HomePage = () => {
   const [films, setFilms] = useState([])
@@ -9,11 +10,7 @@ const HomePage = () => {
   
   const location = useLocation();
 
-  useEffect(() => {
-    // getTrendingFilm().then(data => setFilms([...data.results]))
-    //   .catch(error => {
-    //     setError({ error })
-    //   }, []);
+  useEffect(() => {    
     async function getData() {
       try {
         const data = await getTrendingFilm();
@@ -29,7 +26,7 @@ const HomePage = () => {
   return (
     <>
       {!error && (
-        <ul>
+        <List>
           {films?.map(item => {
             return (
               <CardFilm
@@ -41,7 +38,7 @@ const HomePage = () => {
               />
             );
           })}
-        </ul>
+        </List>
       )}
     </>
   );

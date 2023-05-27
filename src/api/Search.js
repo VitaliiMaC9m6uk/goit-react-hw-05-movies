@@ -26,9 +26,25 @@ import axios from 'axios';
 const API_KEY = 'e03f5baf62035d5c2a9b07531dbf82b3';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+
  export async function getTrendingFilm() {
    const { data } = await axios.get(`/trending/movie/week`, {
      params: { api_key: API_KEY },
    });
    return data.results;
- }
+}
+export async function getDetailFilm(movie_id) {
+  const { data } = await axios.get(`/movie/${movie_id}`, {
+    params: { api_key: API_KEY },
+    language: 'en-US',
+  });
+  return data;
+}
+
+export async function getFindFilm(film) {
+  const { data } = await axios.get(`search/movie?query=${film}`, {
+    params: { api_key: API_KEY },
+    language: 'en-US',
+  });
+  return data;
+}

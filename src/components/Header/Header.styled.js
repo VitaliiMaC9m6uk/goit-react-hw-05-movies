@@ -11,9 +11,9 @@ margin-left:10px;
 margin-right:10px;
 margin-top:10px;
 display:flex;
-justify-content:center;
 gap:10px;
 `
 export const Link = styled.li`
-padding:5px 0;    
+padding:5px 0;
+list-style:none;    
 `
