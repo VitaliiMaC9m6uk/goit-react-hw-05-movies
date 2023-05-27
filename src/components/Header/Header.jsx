@@ -1,17 +1,17 @@
-import {  Outlet } from "react-router-dom";
-import { NavLink, Container, Navbar } from './Header.styled';
+import { NavLink,Outlet } from 'react-router-dom';
+import { Link, Container, Navbar } from './Header.styled';
 
 const Header = () => {
     return (
       <>
         <Navbar>
           <Container>
-            <NavLink href="/">
-              Home
-            </NavLink>
-            <NavLink href="/movies">
-              Movie
-            </NavLink>
+            <Link>
+              <NavLink to="/">Home</NavLink>
+            </Link>
+            <Link>
+              <NavLink to="/movies">Movie</NavLink>
+            </Link>
           </Container>
         </Navbar>
         <Outlet />
