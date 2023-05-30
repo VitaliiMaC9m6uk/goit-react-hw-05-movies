@@ -1,7 +1,7 @@
 import { getFindFilm } from "api/Search";
 import { CardFilm } from "components/CardFilm/CardFilm";
 import { useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Form, List } from "./MoviePage.styled";
 
 const MoviePage = () => {
