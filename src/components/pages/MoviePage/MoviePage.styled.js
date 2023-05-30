@@ -7,3 +7,7 @@ export const List = styled.ul`
   flex-wrap: wrap;
   justify-content: space-around;
 `;
+export const Form = styled.form`
+  display:flex;
+  gap:10px;
+`

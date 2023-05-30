@@ -8,8 +8,7 @@ const HomePage = () => {
   const [films, setFilms] = useState([])
   const [error, setError] = useState(false)
   
-  const location = useLocation();
-
+  const location = useLocation();  
   useEffect(() => {    
     async function getData() {
       try {

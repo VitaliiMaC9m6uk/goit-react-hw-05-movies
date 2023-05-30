@@ -1,15 +1,17 @@
 import { getFindFilm } from "api/Search";
 import { CardFilm } from "components/CardFilm/CardFilm";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { List } from "./MoviePage.styled";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { Form, List } from "./MoviePage.styled";
 
 const MoviePage = () => {
-    const [film, setFilm] = useState([]);
-    const [find, setFind] = useState('');
-    const [error, setError] = useState(false);
-    const location = useLocation();
-
+  const [film, setFilm] = useState([]);
+  const [find, setFind] = useState('');
+  const [error, setError] = useState(false);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const movies = searchParams.get('/movies');
+  const location = useLocation();
+  
     const hendlerChange = ({ target: { value } }) => {
         setFind(value);
     };
@@ -18,7 +20,8 @@ const MoviePage = () => {
     e.preventDefault();
     if (find.trim() === '') {
       return;
-    }
+      }
+    // setSearchParams({ movies : e.target[0].value });    
     async function getData() {
       try {
         const data = await getFindFilm(find.trim().replace(' ', '%20'));
@@ -33,11 +36,11 @@ const MoviePage = () => {
     
     return (
       <>
-        <form onSubmit={hendlerSubmit}>
+        <Form onSubmit={hendlerSubmit}>
           <label>Movie search</label>
           <input onChange={hendlerChange} value={find}></input>
           <button>Search</button>
-        </form>
+        </Form>
 
         {!error && (
           <List>

@@ -48,3 +48,21 @@ export async function getFindFilm(film) {
   });
   return data;
 }
+export async function getFilmCast(id) {
+  const { data } = await axios.get(`/movie/${id}/credits`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+    },
+  });
+  return data.cast;
+}
+export async function getFilmReviews(id) {
+  const { data } = await axios.get(`/movie/${id}/reviews`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',      
+    },
+  });
+  return data.results;
+}
