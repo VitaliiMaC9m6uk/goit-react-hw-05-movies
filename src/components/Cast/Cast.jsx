@@ -2,7 +2,7 @@ import { getFilmCast } from "api/Search";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import defaultImgCast from "../../img/default-image.jpg"
-import { Container, Img, List, ListElement } from "./Cast.styled";
+import { Img, List, ListElement } from "./Cast.styled";
 
 
 const Cast = () => {
