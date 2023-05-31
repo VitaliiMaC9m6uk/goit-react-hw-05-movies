@@ -1,9 +1,9 @@
 // import { Outlet } from "react-router-dom";
 
 import { getDetailFilm } from "api/Search";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import defaultImg from '../../../img/default-image.jpg'
+import defaultImg from '../../img/default-image.jpg'
 import { Container, Detail, Info } from "./DetailsFilm.styled";
 const DetailsFilm = () => {
     const [film, setFilm] = useState([]);
@@ -65,7 +65,9 @@ const DetailsFilm = () => {
                 <Link to="reviews">Reviews</Link>
               </li>
             </ul>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
           </Container>
         )}
       </>

@@ -1,39 +1,43 @@
 import { getFindFilm } from "api/Search";
 import { CardFilm } from "components/CardFilm/CardFilm";
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { Form, List } from "./MoviePage.styled";
 
 const MoviePage = () => {
   const [film, setFilm] = useState([]);
   const [find, setFind] = useState('');
   const [error, setError] = useState(false);
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const movies = searchParams.get('/movies');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movies = searchParams.get('movies');
   const location = useLocation();
   
     const hendlerChange = ({ target: { value } }) => {
         setFind(value);
-    };
-
-    const hendlerSubmit = e => {
-    e.preventDefault();
-    if (find.trim() === '') {
+  };
+  
+  useEffect(() => {
+    if (!movies) {
       return;
-      }
-    // setSearchParams({ movies : e.target[0].value });    
+    }
     async function getData() {
       try {
-        const data = await getFindFilm(find.trim().replace(' ', '%20'));
+        const data = await getFindFilm(movies.trim().replace(' ', '%20'));
         setFilm(data.results);
       } catch {
         setError(true);
       }
     }
     getData();
+  }, [movies]);
+    const hendlerSubmit = e => {
+    e.preventDefault();
+    if (find.trim() === '') {
+      return;
+      }
+    setSearchParams({ movies : e.target[0].value });    
     setFind('')
-  };
-    
+  };  
     return (
       <>
         <Form onSubmit={hendlerSubmit}>

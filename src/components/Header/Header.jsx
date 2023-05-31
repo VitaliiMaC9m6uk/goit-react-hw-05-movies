@@ -1,5 +1,6 @@
 import { NavLink,Outlet } from 'react-router-dom';
 import { Link, Container, Navbar } from './Header.styled';
+import { Suspense } from 'react';
 
 const Header = () => {
     return (
@@ -14,7 +15,9 @@ const Header = () => {
             </Link>
           </Container>
         </Navbar>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </>
     );
 };
